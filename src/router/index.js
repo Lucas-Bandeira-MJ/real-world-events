@@ -1,25 +1,38 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
+
+import EventList from '../views/EventList.vue'
+import EventCreate from '../views/EventCreate.vue'
+import EventShow from '../views/EventShow.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
+  { 
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'event-list',
+    component: EventList
   },
   {
-    path: '/about-us',
-    name: 'About',
-    component: About
+    path: '/create',
+    name: 'event-create',
+    component: EventCreate
   },
   {
-    path: '/about',
-    redirect: { name: 'About' }
+    path: '/event/:id',
+    name: 'event-show',
+    component: EventShow,
+    props: true
   }
+  // {
+  //   path: '/about-us',
+  //   name: 'About',
+  //   component: About
+  // },
+  // {
+  //   path: '/about',
+  //   redirect: { name: 'About' }
+  // }
   // {
   //   path: '/about',
   //   name: 'About',
@@ -32,6 +45,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 
